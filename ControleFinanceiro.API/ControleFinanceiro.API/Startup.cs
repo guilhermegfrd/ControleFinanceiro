@@ -1,19 +1,17 @@
+using ControleFinanceiro.API.Validacoes;
 using ControleFinanceiro.BLL.Models;
 using ControleFinanceiro.DAL;
+using ControleFinanceiro.DAL.Interfaces;
+using ControleFinanceiro.DAL.Repositorios;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace ControleFinanceiro.API
 {
@@ -33,6 +31,11 @@ namespace ControleFinanceiro.API
 
             services.AddIdentity<Usuario, Funcao>().AddEntityFrameworkStores<Contexto>();
 
+            services.AddScoped<ICategoriaRepositorio, CategoriaRepositorio>();
+            services.AddScoped<ITipoRepositorio, TipoRepositorio>();
+
+            services.AddTransient<IValidator<Categoria>, CategoriaValidator>();
+
             services.AddCors();
 
             services.AddSpaStaticFiles(dir =>
@@ -41,6 +44,7 @@ namespace ControleFinanceiro.API
             });
 
             services.AddControllers()
+                .AddFluentValidation()
                 .AddJsonOptions(opt =>
                 {
                     opt.JsonSerializerOptions.IgnoreNullValues = true;

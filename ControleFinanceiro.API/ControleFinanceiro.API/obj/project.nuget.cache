@@ -1,9 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "k7Nosh3EKCIwZ0pawclESIAIVVDBfOYZguN4UdYgCyUJegnmS+xmhBwyhzPTX1hjeuVnsIOtYF3zY6PBRSRdlw==",
+  "dgSpecHash": "9e/hnNuA2iIOFZY8aAC4GiiMcoDgmTSJ1tt2f5pllXxq7LCF1eaOFN+JydM6rCNNQO7y0pXhodMKv6JF9K139w==",
   "success": true,
   "projectFilePath": "C:\\Users\\TI\\Desktop\\ControleFinanceiro\\ControleFinanceiro.API\\ControleFinanceiro.API\\ControleFinanceiro.API.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\TI\\.nuget\\packages\\fluentvalidation\\11.2.1\\fluentvalidation.11.2.1.nupkg.sha512",
+    "C:\\Users\\TI\\.nuget\\packages\\fluentvalidation.aspnetcore\\11.2.2\\fluentvalidation.aspnetcore.11.2.2.nupkg.sha512",
+    "C:\\Users\\TI\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\11.2.1\\fluentvalidation.dependencyinjectionextensions.11.2.1.nupkg.sha512",
     "C:\\Users\\TI\\.nuget\\packages\\microsoft.aspnetcore.authentication\\2.2.0\\microsoft.aspnetcore.authentication.2.2.0.nupkg.sha512",
     "C:\\Users\\TI\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\TI\\.nuget\\packages\\microsoft.aspnetcore.authentication.cookies\\2.2.0\\microsoft.aspnetcore.authentication.cookies.2.2.0.nupkg.sha512",
