@@ -10,18 +10,18 @@ namespace ControleFinanceiro.API.Validacoes
             RuleFor(c => c.Nome)
                 .NotNull().WithMessage("Preencha o nome")
                 .NotEmpty().WithMessage("Preencha o nome")
-                .MinimumLength(6).WithMessage("Use mais caracteres")
-                .MaximumLength(50).WithMessage("Use menos caracteres");
+                .MinimumLength(6).WithMessage("Use mais caractéres")
+                .MaximumLength(50).WithMessage("Use menos caractéres");
 
             RuleFor(c => c.Icone)
-               .NotNull().WithMessage("Preencha o nome")
-               .NotEmpty().WithMessage("Preencha o nome")
-               .MinimumLength(1).WithMessage("Use mais caracteres")
-               .MaximumLength(15).WithMessage("Use menos caracteres");
+               .NotNull().WithMessage("Preencha o ícone")
+               .NotEmpty().WithMessage("Preencha o ícone")
+               .MinimumLength(1).WithMessage("Use mais caractéres")
+               .MaximumLength(15).WithMessage("Use menos caractéres");
 
-            RuleFor(c => c.Tipo)
-               .NotNull().WithMessage("Preencha o nome")
-               .NotEmpty().WithMessage("Preencha o nome");               
+            RuleFor(c => c.TipoId)
+               .NotNull().WithMessage("Preencha o tipo")
+               .NotEmpty().WithMessage("Preencha o tipo");               
         }
     }
 }
