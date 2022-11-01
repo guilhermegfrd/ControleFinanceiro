@@ -76,5 +76,18 @@ namespace ControleFinanceiro.DAL.Repositorios
                 throw ex;
             }
         }
+
+        public async Task<Usuario> PegarUsuarioPeloEmail(string email)
+        {
+            try
+            {
+                return await _gerenciadorUsuarios.FindByEmailAsync(email);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
     }
 }

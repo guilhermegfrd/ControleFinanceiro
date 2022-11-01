@@ -12,5 +12,6 @@ namespace ControleFinanceiro.DAL.Interfaces
         Task<IdentityResult> CriarUsuario(Usuario usuario, string senha);
         Task IncluirUsuarioEmFuncao(Usuario usuario, string funcao);
         Task LogarUsuario(Usuario usuario, bool lembrar);
+        Task<Usuario> PegarUsuarioPeloEmail(string email);
     }
 }

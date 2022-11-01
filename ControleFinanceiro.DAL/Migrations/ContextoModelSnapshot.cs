@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ControleFinanceiro.DAL.Migrations
 {
-    [DbContext(typeof(IUsuarioRepositorio))]
+    [DbContext(typeof(Contexto))]
     partial class ContextoModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

@@ -10,7 +10,7 @@ namespace ControleFinanceiro.API.Validacoes
             RuleFor(c => c.NomeUsuario)
                 .NotNull().WithMessage("Preencha o nome de usuário")
                 .NotEmpty().WithMessage("Preencha o nome de usuário")
-                .MinimumLength(1).WithMessage("Use mais caractéres")
+                .MinimumLength(6).WithMessage("Use mais caractéres")
                 .MaximumLength(50).WithMessage("Use menos caractéres");           
 
             RuleFor(c => c.CPF)
@@ -22,7 +22,7 @@ namespace ControleFinanceiro.API.Validacoes
             RuleFor(c => c.Profissao)
               .NotNull().WithMessage("Preencha a profissão")
               .NotEmpty().WithMessage("Preencha a profissão")
-              .MinimumLength(10).WithMessage("Use mais caractéres")
+              .MinimumLength(1).WithMessage("Use mais caractéres")
               .MaximumLength(50).WithMessage("Use menos caractéres");
 
             RuleFor(c => c.Foto)
