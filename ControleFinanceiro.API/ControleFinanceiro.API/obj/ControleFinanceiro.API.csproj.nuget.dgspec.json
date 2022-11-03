@@ -55,6 +55,10 @@
               "target": "Package",
               "version": "[11.2.2, )"
             },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[3.1.30, )"
+            },
             "Microsoft.AspNetCore.Identity": {
               "target": "Package",
               "version": "[2.2.0, )"
@@ -86,6 +90,10 @@
             "Microsoft.Extensions.Identity.Stores": {
               "target": "Package",
               "version": "[3.1.30, )"
+            },
+            "Microsoft.IdentityModel.Tokens": {
+              "target": "Package",
+              "version": "[6.25.0, )"
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
