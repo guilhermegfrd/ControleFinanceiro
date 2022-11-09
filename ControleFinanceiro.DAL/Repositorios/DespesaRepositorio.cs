@@ -30,6 +30,22 @@ namespace ControleFinanceiro.DAL.Repositorios
             }
         }
 
+        public IQueryable<Despesa> FiltrarDespesas(string nomeCategoria)
+        {
+            try
+            {
+                return _contexto.Despesas
+                    .Include(x => x.Cartao).Include(x => x.Mes)
+                    .Include(x => x.Categoria).ThenInclude(x => x.Tipo)
+                    .Where(x => x.Categoria.Nome.Contains(nomeCategoria) && x.Categoria.Tipo.Nome == "Despesa");
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
         public async Task<IEnumerable<Despesa>> PegarDespesasPeloCartaoId(int cartaoId)
         {
             try
@@ -47,7 +63,7 @@ namespace ControleFinanceiro.DAL.Repositorios
         {
             try
             {
-                return _contexto.Despesas.Include(x => x.Cartao).Include(x => x.Categoria).Where(x => x.UsuarioId == usuarioId);
+                return _contexto.Despesas.Include(x => x.Cartao).Include(x => x.Categoria).Include(x => x.Mes).Where(x => x.UsuarioId == usuarioId);
             }
             catch (Exception ex)
             {

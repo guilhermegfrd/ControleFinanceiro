@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ControleFinanceiro.DAL.Migrations
 {
-    public partial class criacaoBancoDados : Migration
+    public partial class criacaoDB : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -265,7 +265,8 @@ namespace ControleFinanceiro.DAL.Migrations
                 name: "Despesas",
                 columns: table => new
                 {
-                    DespesaId = table.Column<int>(nullable: false),
+                    DespesaId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     CartaoId = table.Column<int>(nullable: false),
                     Descricao = table.Column<string>(maxLength: 50, nullable: false),
                     CategoriaId = table.Column<int>(nullable: false),
@@ -279,16 +280,16 @@ namespace ControleFinanceiro.DAL.Migrations
                 {
                     table.PrimaryKey("PK_Despesas", x => x.DespesaId);
                     table.ForeignKey(
+                        name: "FK_Despesas_Cartoes_CartaoId",
+                        column: x => x.CartaoId,
+                        principalTable: "Cartoes",
+                        principalColumn: "CartaoId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
                         name: "FK_Despesas_Categorias_CategoriaId",
                         column: x => x.CategoriaId,
                         principalTable: "Categorias",
                         principalColumn: "CategoriaId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Despesas_Cartoes_DespesaId",
-                        column: x => x.DespesaId,
-                        principalTable: "Cartoes",
-                        principalColumn: "CartaoId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Despesas_Meses_MesId",
@@ -308,8 +309,8 @@ namespace ControleFinanceiro.DAL.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Descricao", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "24ff7741-272a-4a99-a491-9be5c935b5db", "9444e412-ffd7-4e33-8556-bcfad1081c61", "Administrador do sistema", "Administrador", "ADMINISTRADOR" },
-                    { "97adaae2-a1f4-4ea1-a5b3-52007e050012", "904c2cb0-febb-4682-beab-234575cd1b9d", "Usuário do sistema", "Usuario", "USUARIO" }
+                    { "dc866200-b49b-4e94-9830-f8ed0651a898", "416ba218-c97c-4c65-b987-7b6275bdba54", "Administrador do sistema", "Administrador", "ADMINISTRADOR" },
+                    { "8ad0dfac-9de2-4a9b-a7fc-8cc2939d43ba", "b0c529c8-6bca-40ac-b7f7-023abd76ff98", "Usuário do sistema", "Usuario", "USUARIO" }
                 });
 
             migrationBuilder.InsertData(
@@ -381,6 +382,11 @@ namespace ControleFinanceiro.DAL.Migrations
                 name: "IX_Categorias_TipoId",
                 table: "Categorias",
                 column: "TipoId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Despesas_CartaoId",
+                table: "Despesas",
+                column: "CartaoId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Despesas_CategoriaId",

@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ControleFinanceiro.DAL.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20221025181835_criacaoBancoDados")]
-    partial class criacaoBancoDados
+    [Migration("20221109164739_criacaoDB")]
+    partial class criacaoDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -93,7 +93,9 @@ namespace ControleFinanceiro.DAL.Migrations
             modelBuilder.Entity("ControleFinanceiro.BLL.Models.Despesa", b =>
                 {
                     b.Property<int>("DespesaId")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("Ano")
                         .HasColumnType("int");
@@ -123,6 +125,8 @@ namespace ControleFinanceiro.DAL.Migrations
                         .HasColumnType("float");
 
                     b.HasKey("DespesaId");
+
+                    b.HasIndex("CartaoId");
 
                     b.HasIndex("CategoriaId");
 
@@ -168,16 +172,16 @@ namespace ControleFinanceiro.DAL.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "24ff7741-272a-4a99-a491-9be5c935b5db",
-                            ConcurrencyStamp = "9444e412-ffd7-4e33-8556-bcfad1081c61",
+                            Id = "dc866200-b49b-4e94-9830-f8ed0651a898",
+                            ConcurrencyStamp = "416ba218-c97c-4c65-b987-7b6275bdba54",
                             Descricao = "Administrador do sistema",
                             Name = "Administrador",
                             NormalizedName = "ADMINISTRADOR"
                         },
                         new
                         {
-                            Id = "97adaae2-a1f4-4ea1-a5b3-52007e050012",
-                            ConcurrencyStamp = "904c2cb0-febb-4682-beab-234575cd1b9d",
+                            Id = "8ad0dfac-9de2-4a9b-a7fc-8cc2939d43ba",
+                            ConcurrencyStamp = "b0c529c8-6bca-40ac-b7f7-023abd76ff98",
                             Descricao = "Usuário do sistema",
                             Name = "Usuario",
                             NormalizedName = "USUARIO"
@@ -543,15 +547,15 @@ namespace ControleFinanceiro.DAL.Migrations
 
             modelBuilder.Entity("ControleFinanceiro.BLL.Models.Despesa", b =>
                 {
-                    b.HasOne("ControleFinanceiro.BLL.Models.Categoria", "Categoria")
+                    b.HasOne("ControleFinanceiro.BLL.Models.Cartao", "Cartao")
                         .WithMany("Despesas")
-                        .HasForeignKey("CategoriaId")
+                        .HasForeignKey("CartaoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ControleFinanceiro.BLL.Models.Cartao", "Cartao")
+                    b.HasOne("ControleFinanceiro.BLL.Models.Categoria", "Categoria")
                         .WithMany("Despesas")
-                        .HasForeignKey("DespesaId")
+                        .HasForeignKey("CategoriaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

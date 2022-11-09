@@ -89,5 +89,11 @@ namespace ControleFinanceiro.API.Controllers
                 mensagem = $"Despesa no valor de R$ {despesa.Valor} excluída com sucesso"
             });
         }
+
+        [HttpGet("FiltrarDespesas/{nomeCategoria}")]
+        public async Task<ActionResult<IEnumerable<Despesa>>> FiltrarDespesas(string nomeCategoria)
+        {
+            return await _despesaRepositorio.FiltrarDespesas(nomeCategoria).ToListAsync();
+        }
     }
 }

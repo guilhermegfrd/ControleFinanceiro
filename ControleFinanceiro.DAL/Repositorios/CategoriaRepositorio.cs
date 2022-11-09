@@ -56,5 +56,19 @@ namespace ControleFinanceiro.DAL.Repositorios
                 throw ex;
             }
         }
+
+        public IQueryable<Categoria> PegarCategoriasPeloTipo(string tipo)
+        {
+            try
+            {
+                var entity = _contexto.Categorias.Include(x => x.Tipo).Where(x => x.Tipo.Nome.Contains(tipo));
+                return entity;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
     }
 }
