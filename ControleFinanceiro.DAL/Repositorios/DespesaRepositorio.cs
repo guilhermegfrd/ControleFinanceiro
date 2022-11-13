@@ -71,5 +71,18 @@ namespace ControleFinanceiro.DAL.Repositorios
                 throw ex;
             }
         }
+
+        public Task<double> PegaDespesaTotalPeloUsuarioId(string usuarioId)
+        {
+            try
+            {
+                return _contexto.Despesas.Where(x => x.UsuarioId == usuarioId).SumAsync(x => x.Valor);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
     }
 }

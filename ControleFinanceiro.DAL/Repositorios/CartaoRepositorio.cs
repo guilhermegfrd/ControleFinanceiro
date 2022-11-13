@@ -42,5 +42,18 @@ namespace ControleFinanceiro.DAL.Repositorios
                 throw ex;
             }
         }
+
+        public async Task<int> PegarQuantidadeCartoesPeloUsuarioId(string usuarioId)
+        {
+            try
+            {
+                return await _contexto.Cartoes.CountAsync(x => x.UsuarioId == usuarioId);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
     }
 }

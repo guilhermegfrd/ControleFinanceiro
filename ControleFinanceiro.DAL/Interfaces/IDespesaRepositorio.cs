@@ -11,5 +11,7 @@ namespace ControleFinanceiro.DAL.Interfaces
         void ExcluirDespesas(IEnumerable<Despesa> despesas);
         Task<IEnumerable<Despesa>> PegarDespesasPeloCartaoId(int cartaoId);
         IQueryable<Despesa> FiltrarDespesas(string nomeCategoria);
+        Task<double> PegarDespesaTotalPeloUsuarioId(string usuarioId);
+
     }
 }
